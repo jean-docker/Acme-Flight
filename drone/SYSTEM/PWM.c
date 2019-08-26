@@ -18,8 +18,8 @@ void PWM_Init(void)
 	clr_PWMDIV1;
 	clr_PWMDIV2;						//PWM不分频
 	
-	PWMPH = 0x07;
-	PWMPL = 0xCF;						//PWM周期计数器
+	PWMPH = 0x03;
+	PWMPL = 0xFF;						//PWM周期计数器,10Bit精度
 	
 	PWM0H = 0x00;
 	PWM0L = 0x00;						//PWM通道1初始化
@@ -43,7 +43,7 @@ void PWM_Init(void)
 void PWM1_SetDuty(uint16_t duty)
 {
 	PWM0H = (duty & 0xff00)>>8;
-	PWM0L = duty & 0x00ff;
+	PWM0L = duty & 0xff;
 	set_LOAD;
 }
 
