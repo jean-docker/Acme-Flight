@@ -1,43 +1,25 @@
-#include "stm32f10x.h"
+#include "User.h"
 
-#include "FreeRTOS.h"
-#include "task.h"
-#include "queue.h"
+TaskHandle_t Initial_Task_Handler;
 
 
-
-void vTaskLed1( void * pvParameters )
+void Initial(void *pvParameters)
 {
 	while(1)
 	{
-		vTaskDelay( 5000 );
+		vTaskDelay(1000);
 	}
 	
 }
 
-
-int main ( void )
-{	
-
-	xTaskCreate( vTaskLed1, "Task 1", 512, NULL, 1, NULL );
-	
-	vTaskStartScheduler();
-	
-
+int main(void)
+{
+	xTaskCreate((TaskFunction_t)Initial,
+							(const char *)"Initial_Task",
+							(uint16_t)128,
+							(void *)NULL,
+							(UBaseType_t)1,
+							(TaskHandle_t *)Initial_Task_Handler);
+	vTaskStartScheduler();	
+	while(1);
 }
-
-
-
-/*********************************************END OF FILE**********************/
-
-
-
-
-
-
-
-
-
-
-
-
