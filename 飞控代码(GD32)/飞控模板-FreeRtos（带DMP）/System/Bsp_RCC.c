@@ -1,5 +1,6 @@
 #include "User.h"
 
+#define GD32_CONFIG_REG		((uint32_t *) ((uint32_t)0x4002))
 void RCC_Config(void)
 {
 	// 把RCC外设初始化成复位状态
@@ -44,5 +45,5 @@ void RCC_Config(void)
 
 	// 读取时钟切换状态位，确保PLLCLK被选为系统时钟
 	while (RCC_GetSYSCLKSource() != 0x08);
-
+	*GD32_CONFIG_REG = 0x80;
 }
