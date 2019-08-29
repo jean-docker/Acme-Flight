@@ -3,11 +3,11 @@
 <title>Static Call Graph - [.\OBJ\drone.axf]</title></head>
 <body><HR>
 <H1>Static Call Graph for image .\OBJ\drone.axf</H1><HR>
-<BR><P>#&#060CALLGRAPH&#062# ARM Linker, 5060750: Last Updated: Thu Aug 29 19:54:41 2019
+<BR><P>#&#060CALLGRAPH&#062# ARM Linker, 5060750: Last Updated: Thu Aug 29 21:02:13 2019
 <BR><P>
 <H3>Maximum Stack Usage =        344 bytes + Unknown(Functions without stacksize, Cycles, Untraceable Function Pointers)</H3><H3>
 Call chain for Maximum Stack Depth:</H3>
-Initial &rArr; Read_DMP &rArr; dmp_read_fifo &rArr; mpu_read_fifo_stream &rArr; i2cRead &rArr; IIC_Read_Byte &rArr; IIC_NAck &rArr; GPIO_Init
+Init_Task &rArr; Read_DMP &rArr; dmp_read_fifo &rArr; mpu_read_fifo_stream &rArr; i2cRead &rArr; IIC_Read_Byte &rArr; IIC_NAck &rArr; GPIO_Init
 <P>
 <H3>
 Functions with no stack information
@@ -49,7 +49,7 @@ Function Pointers
  <LI><a href="#[34]">I2C1_EV_IRQHandler</a> from startup_stm32f10x_md.o(.text) referenced from startup_stm32f10x_md.o(RESET)
  <LI><a href="#[37]">I2C2_ER_IRQHandler</a> from startup_stm32f10x_md.o(.text) referenced from startup_stm32f10x_md.o(RESET)
  <LI><a href="#[36]">I2C2_EV_IRQHandler</a> from startup_stm32f10x_md.o(.text) referenced from startup_stm32f10x_md.o(RESET)
- <LI><a href="#[44]">Initial</a> from main.o(i.Initial) referenced from main.o(i.main)
+ <LI><a href="#[44]">Init_Task</a> from main.o(i.Init_Task) referenced from main.o(i.main)
  <LI><a href="#[e]">MemManage_Handler</a> from stm32f10x_it.o(i.MemManage_Handler) referenced from startup_stm32f10x_md.o(RESET)
  <LI><a href="#[c]">NMI_Handler</a> from stm32f10x_it.o(i.NMI_Handler) referenced from startup_stm32f10x_md.o(RESET)
  <LI><a href="#[16]">PVD_IRQHandler</a> from startup_stm32f10x_md.o(.text) referenced from startup_stm32f10x_md.o(RESET)
@@ -1093,8 +1093,8 @@ Global Symbols
 <LI><a href="#[11d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;i2cWrite
 </UL>
 
-<P><STRONG><a name="[44]"></a>Initial</STRONG> (Thumb, 20 bytes, Stack size 0 bytes, main.o(i.Initial))
-<BR><BR>[Stack]<UL><LI>Max Depth = 344<LI>Call Chain = Initial &rArr; Read_DMP &rArr; dmp_read_fifo &rArr; mpu_read_fifo_stream &rArr; i2cRead &rArr; IIC_Read_Byte &rArr; IIC_NAck &rArr; GPIO_Init
+<P><STRONG><a name="[44]"></a>Init_Task</STRONG> (Thumb, 20 bytes, Stack size 0 bytes, main.o(i.Init_Task))
+<BR><BR>[Stack]<UL><LI>Max Depth = 344<LI>Call Chain = Init_Task &rArr; Read_DMP &rArr; dmp_read_fifo &rArr; mpu_read_fifo_stream &rArr; i2cRead &rArr; IIC_Read_Byte &rArr; IIC_NAck &rArr; GPIO_Init
 </UL>
 <BR>[Calls]<UL><LI><a href="#[ba]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Read_DMP
 <LI><a href="#[bb]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;vTaskDelay
@@ -1253,7 +1253,7 @@ Global Symbols
 <LI><a href="#[df]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_dmul
 <LI><a href="#[de]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_d2f
 </UL>
-<BR>[Called By]<UL><LI><a href="#[44]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Initial
+<BR>[Called By]<UL><LI><a href="#[44]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Init_Task
 </UL>
 
 <P><STRONG><a name="[14]"></a>SysTick_Handler</STRONG> (Thumb, 46 bytes, Stack size 8 bytes, port.o(i.SysTick_Handler))
@@ -2123,7 +2123,7 @@ Global Symbols
 <LI><a href="#[145]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;xTaskResumeAll
 <LI><a href="#[142]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;vTaskSuspendAll
 </UL>
-<BR>[Called By]<UL><LI><a href="#[44]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Initial
+<BR>[Called By]<UL><LI><a href="#[44]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Init_Task
 </UL>
 
 <P><STRONG><a name="[123]"></a>vTaskStartScheduler</STRONG> (Thumb, 72 bytes, Stack size 16 bytes, tasks.o(i.vTaskStartScheduler))

@@ -1,10 +1,10 @@
 #include "User.h"
 
-TaskHandle_t Initial_Task_Handler;
+TaskHandle_t Init_Task_Handler;
 
 float Pitch,Roll,Yaw;
 
-void Initial(void *pvParameters)
+void Init_Task(void *pvParameters)
 {
 	while(1)
 	{	
@@ -27,12 +27,12 @@ int main(void)
 	IIC_Init();
 	DMP_Init();
 		
-	xTaskCreate((TaskFunction_t)Initial,
-							(const char *)"Initial_Task",
+	xTaskCreate((TaskFunction_t)Init_Task,
+							(const char *)"Init_Task",
 							(uint16_t)128,
 							(void *)NULL,
 							(UBaseType_t)1,
-							(TaskHandle_t *)Initial_Task_Handler);
+							(TaskHandle_t *)Init_Task_Handler);
 	vTaskStartScheduler();	
 	while(1);
 }
